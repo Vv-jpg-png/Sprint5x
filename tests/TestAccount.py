@@ -2,11 +2,9 @@ import time
 ttime = 0.5
 import random
 
+from locators import *
 import pytest
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-
-
 
 class TestAccount():
         def test_account_success(self,account):
@@ -31,7 +29,6 @@ class TestAccount():
                 time.sleep(ttime)
 
                 ttext = driver.current_url
-                aassert = ("/login" in ttext) # ????????????
                 aassert = ("/reset-password" in ttext)
                 assert aassert
                 return
@@ -46,5 +43,5 @@ class TestAccount():
                 account, password = func(account, password)
 
                 #@// *[ @ id = "root"] / div / main / div / form / fieldset[2] / div / p
-                wrong_text = driver.find_element(By.XPATH, "//*[@id='root']/div/main/div/form/fieldset[2]/div/p")
+                wrong_text = driver.find_element(By.XPATH, LOGIN_WRONG_ACCOUNT_XPATH)
                 assert 'Некорректный пароль' in wrong_text.text
