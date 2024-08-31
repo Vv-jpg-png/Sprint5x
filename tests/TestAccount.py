@@ -42,6 +42,5 @@ class TestAccount():
                 driver, func = account_with_any_login
                 account, password = func(account, password)
 
-                #@// *[ @ id = "root"] / div / main / div / form / fieldset[2] / div / p
                 wrong_text = driver.find_element(By.XPATH, LOGIN_WRONG_ACCOUNT_XPATH)
                 assert 'Некорректный пароль' in wrong_text.text

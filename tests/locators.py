@@ -23,3 +23,8 @@ CABINET_EXIT_BUTTON_XPATH = "//*[@id='root']/div/main/div/nav/ul/li[3]/button"
 CABINET_CONSTRUCTOR_A_XPATH = "//*[@id='root']/div/header/nav/ul/li[1]/a"
 CABINET_LOGOTYPE_A_XPATH = "//*[@id='root']/div/header/nav/div/a"
 CABINET_LOGIN_BUTTON_XPATH = '//*[@id="root"]/div/main/div/form/button[text()="Войти"]'
+
+CONSTR_BULKI_WAIT_XPATH = '//*[@id="root"]/div/main/section[1]/div[1]/div[1]/span'
+CONSTR_BULKI_A_XPATH    = '//*[@id="root"]/div/main/section[1]/div[1]'
+CONSTR_SOUGE_A_XPATH    = '//*[@id="root"]/div/main/section[1]/div[1]/div[2]/span'
+CONSTR_NACHINKA_A_XPATH = '//*[@id="root"]/div/main/section[1]/div[1]/div[3]/span'

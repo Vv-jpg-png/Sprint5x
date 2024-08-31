@@ -1,6 +1,8 @@
 import time
 import pytest
 
+from locators import *
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -10,9 +12,8 @@ class TestConstructor():
     def test_constructor_bulki_success(self, account_cabinet):
         driver, email, password = account_cabinet
         driver.get('https://stellarburgers.nomoreparties.site/')
-        WebDriverWait(driver,30).until(EC.presence_of_element_located((By.XPATH,
-                                        '//*[@id="root"]/div/main/section[1]/div[1]/div[1]/span')))
-        elm = driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[1]/div[1]')
+        WebDriverWait(driver,30).until(EC.presence_of_element_located((By.XPATH,CONSTR_BULKI_WAIT_XPATH)))
+        elm = driver.find_element(By.XPATH, CONSTR_BULKI_A_XPATH)
         elm.click()
         assert elm is not None
 
@@ -20,8 +21,8 @@ class TestConstructor():
         driver, email, password = account_cabinet
         driver.get('https://stellarburgers.nomoreparties.site/')
         WebDriverWait(driver,30).until(EC.presence_of_element_located((By.XPATH,
-                                        '//*[@id="root"]/div/main/section[1]/div[1]/div[2]/span')))
-        elm = driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[1]/div[1]/div[2]/span')
+                                        CONSTR_SOUGE_A_XPATH)))
+        elm = driver.find_element(By.XPATH, CONSTR_SOUGE_A_XPATH )
         elm.click()
         assert elm is not None
 
@@ -29,7 +30,7 @@ class TestConstructor():
         driver, email, password = account_cabinet
         driver.get('https://stellarburgers.nomoreparties.site/')
         WebDriverWait(driver,30).until(EC.presence_of_element_located((By.XPATH,
-                                        '//*[@id="root"]/div/main/section[1]/div[1]/div[3]/span')))
-        elm = driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[1]/div[1]/div[3]/span')
+                                        CONSTR_NACHINKA_A_XPATH)))
+        elm = driver.find_element(By.XPATH, CONSTR_NACHINKA_A_XPATH)
         elm.click()
         assert elm is not None
