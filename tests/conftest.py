@@ -13,7 +13,7 @@ from selenium.webdriver.common.by import By
 
 
 chrome_options = webdriver.ChromeOptions()  # создали объект для опций
-#chrome_options.add_argument('--headless')  # добавили настройку
+#chrome_options.add_argument('--headless')  # добавили настройку ОТСУТСТВИЕ ВИДИМОСТЬ
 #chrome_options.add_argument('--window-size=640,480')  # добавили ещё настройку
 
 service = Service(ChromeDriverManager().install())
