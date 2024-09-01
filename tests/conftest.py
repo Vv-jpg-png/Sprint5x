@@ -156,9 +156,11 @@ def account_forget_password(account_normal):
 
 @pytest.fixture
 def account_with_any_login():
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     def _account_with_any_login(email, password):
-        driver = webdriver.Chrome(service=service, options=chrome_options)
         driver.get('https://stellarburgers.nomoreparties.site/login')
+
+        WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
         elm = driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL)
         elm.send_keys(email)

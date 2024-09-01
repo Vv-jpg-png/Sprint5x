@@ -1,7 +1,6 @@
 import time
 ttime = 0.5
 wait_time = 5
-import random
 
 from locators import *
 import pytest
@@ -9,7 +8,6 @@ import pytest
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-
 
 class TestAccount():
         def test_account_success(self,account):
@@ -47,15 +45,14 @@ class TestAccount():
                 assert aassert
                 return
 
-        @pytest.mark.skip('error')
-        #@pytest.mark.parametrize('account,password',[['ivanov934@iivanov.com','123'],
-        #                                             ['qwerty@123.ya.org','12345'],
-        #                                             ['qq','12345'],
-        #                                             #['qq1',''], # ?????????????
-        #                                             ])
+        #pytest.mark.skip('error')
+        @pytest.mark.parametrize('account,password',[['ivanov934@iivanov.com','123'],
+                                                     ['qwerty@123.ya.org','12345'],
+                                                     ['qq','12345'],
+                                                     ])
         def test_account_fail(self, account_with_any_login, account, password):
                 driver, func = account_with_any_login
                 account, password = func(account, password)
-
+                WebDriverWait(driver,wait_time).until(EC.visibility_of_element_located((By.XPATH, LOGIN_WRONG_ACCOUNT_WAIT_XPATH)))
                 wrong_text = driver.find_element(By.XPATH, LOGIN_WRONG_ACCOUNT_XPATH)
                 assert 'Некорректный пароль' in wrong_text.text

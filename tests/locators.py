@@ -22,6 +22,8 @@ REGISTRATION_EMAIL = '#root > div > main > div > form > fieldset:nth-child(2) > 
 REGISTRATION_PASSWORD = '#root > div > main > div > form > fieldset:nth-child(3) > div > div > input'
 REGISTRATION_BUTTON = '#root > div > main > div > form > button'
 
+##############<p class="input__error text_type_main-default">Некорректный пароль</p>
+LOGIN_WRONG_ACCOUNT_WAIT_XPATH = "//*[@id='root']/div/main/div/form/fieldset[2]/div/p[@class='input__error text_type_main-default']"
 LOGIN_WRONG_ACCOUNT_XPATH = "//*[@id='root']/div/main/div/form/fieldset[2]/div/p"
 
 CABINET_A_XPATH = '//*[@id="root"]/div/header/nav/a'
