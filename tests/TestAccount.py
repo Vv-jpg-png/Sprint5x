@@ -1,5 +1,4 @@
-import time
-ttime = 0.5
+
 wait_time = 5
 
 from locators import *

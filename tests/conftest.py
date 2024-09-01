@@ -1,7 +1,6 @@
 import random
-import time
-ttime = 0.5
 wait_time = 5
+
 from locators import *
 
 import pytest
@@ -187,6 +186,8 @@ def registration_success(account_normal):
     password = '123456'
 
     driver.get('https://stellarburgers.nomoreparties.site/register')
+
+    WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.CSS_SELECTOR, REGISTRATION_BUTTON)))
 
     elm = driver.find_element(By.CSS_SELECTOR,REGISTRATION_NAME)
     elm.send_keys(name)

@@ -1,5 +1,3 @@
-import time
-import pytest
 wait_time = 5
 
 from locators import *
