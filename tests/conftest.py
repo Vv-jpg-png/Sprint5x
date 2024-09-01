@@ -19,16 +19,22 @@ chrome_options = webdriver.ChromeOptions()  # создали объект для
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
-@pytest.fixture(scope='class')
+@pytest.fixture
+def ddriver():
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    yield driver
+    driver.quit()
+
+@pytest.fixture
 def account_normal():
     return 'iivanov@iivanov.com', '123456'
 
 @pytest.fixture
-def account_for_success_entrance(account_normal):
+def account_for_success_entrance(ddriver, account_normal):
 
     email, password = account_normal
 
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = ddriver
 
     driver.get('https://stellarburgers.nomoreparties.site/login')
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
@@ -43,14 +49,12 @@ def account_for_success_entrance(account_normal):
 
     yield driver, email, password
 
-    driver.quit()
-
 @pytest.fixture
-def account_cabinet(account_normal):
+def account_cabinet(ddriver, account_normal):
 
     email, password = account_normal
 
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = ddriver
 
     driver.get('https://stellarburgers.nomoreparties.site')
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_NORMAL_INPUT_WAIT_XPATH)))
@@ -69,13 +73,11 @@ def account_cabinet(account_normal):
 
     yield driver, email, password
 
-    driver.quit()
-
 @pytest.fixture
-def account_input(account_normal):
+def account_input(ddriver, account_normal):
 
     email, password = account_normal
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = ddriver
     driver.get('https://stellarburgers.nomoreparties.site')
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_NORMAL_INPUT_WAIT_XPATH)))
     driver.find_element(By.XPATH,LOGIN_NORMAL_INPUT_XPATH).click()
@@ -92,14 +94,12 @@ def account_input(account_normal):
 
     yield driver, email, password
 
-    driver.quit()
-
 @pytest.fixture
-def account_register_account(account_normal):
+def account_register_account(ddriver, account_normal):
 
     email, password = account_normal
 
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = ddriver
     driver.get('https://stellarburgers.nomoreparties.site/register')
     driver.find_element(By.CSS_SELECTOR,A_REGISTRATION).click()
 
@@ -115,18 +115,16 @@ def account_register_account(account_normal):
 
     yield driver, email, password
 
-    driver.quit()
-
 from selenium.webdriver.support      import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 @pytest.fixture
-def account_forget_password(account_normal):
+def account_forget_password(ddriver, account_normal):
 
     email, password = account_normal
     letter_code = '00000000'
 
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = ddriver
     driver.get('https://stellarburgers.nomoreparties.site/login')
     driver.find_element(By.CSS_SELECTOR,A_FORGET).click()
 
@@ -151,11 +149,9 @@ def account_forget_password(account_normal):
 
     yield driver, email, password
 
-    driver.quit()
-
 @pytest.fixture
-def account_with_any_login():
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+def account_with_any_login(ddriver):
+    driver = ddriver
     def _account_with_any_login(email, password):
         driver.get('https://stellarburgers.nomoreparties.site/login')
 
@@ -174,11 +170,9 @@ def account_with_any_login():
 
     yield driver, _account_with_any_login
 
-    driver.quit()
-
 @pytest.fixture
-def registration_with_name_email():
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+def registration_with_name_email(ddriver):
+    driver = ddriver
 
     def _registration_with_name_email(driver, name, email, password):
             driver.get('https://stellarburgers.nomoreparties.site/register')
@@ -197,6 +191,4 @@ def registration_with_name_email():
             return (name, email, password)
 
     yield driver, _registration_with_name_email
-
-    driver.quit()
 
