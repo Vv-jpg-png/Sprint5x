@@ -2,6 +2,11 @@ LOGIN_EMAIL = '#root > div > main > div > form > fieldset:nth-child(1) > div > d
 LOGIN_PASSWORD = '#root > div > main > div > form > fieldset:nth-child(2) > div > div > input'
 LOGIN_BUTTON = '#root > div > main > div > form > button'
 
+LOGIN_BUTTON_WAIT_XPATH       = '//*[@id="root"]/div/main/div/form/button[text()="Войти"]'
+LOGIN_NORMAL_INPUT_WAIT_XPATH = '//*[@id="root"]/div/main/section[2]/div/button[text()="Войти в аккаунт"]'
+LOGIN_NORMAL_INPUT_XPATH      = '//*[@id="root"]/div/main/section[2]/div/button'
+
+CABINET_A = '#root > div > header > nav > a'
 A_REGISTRATION = '#root > div > main > div > div > p > a'
 A_FORGET = '#root > div > main > div > div > p:nth-child(2) > a'
 
@@ -28,3 +33,7 @@ CONSTR_BULKI_WAIT_XPATH = '//*[@id="root"]/div/main/section[1]/div[1]/div[1]/spa
 CONSTR_BULKI_A_XPATH    = '//*[@id="root"]/div/main/section[1]/div[1]'
 CONSTR_SOUGE_A_XPATH    = '//*[@id="root"]/div/main/section[1]/div[1]/div[2]/span'
 CONSTR_NACHINKA_A_XPATH = '//*[@id="root"]/div/main/section[1]/div[1]/div[3]/span'
+
+LOGIN_SUCCESS_WAIT_XPATH = '//*[@id="root"]/div/main/section[2]/div/button[text()="Оформить заказ"]'
+LOGIN_SUCCESS_XPATH      = '//*[@id="root"]/div/main/section[2]/div/button'
+

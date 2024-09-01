@@ -1,6 +1,7 @@
 import random
 import time
 ttime = 0.5
+wait_time = 5
 from locators import *
 
 import pytest
@@ -8,7 +9,9 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+
 
 chrome_options = webdriver.ChromeOptions()  # создали объект для опций
 #chrome_options.add_argument('--headless')  # добавили настройку
@@ -21,12 +24,13 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 def account_normal():
     return 'iivanov@iivanov.com', '123456'
 
-@pytest.fixture(scope='class')
+@pytest.fixture
 def account(account_normal):
 
     email, password = account_normal
 
     driver.get('https://stellarburgers.nomoreparties.site/login')
+    WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
     elm = driver.find_element(By.CSS_SELECTOR, LOGIN_EMAIL)
     elm.send_keys(email)
@@ -40,13 +44,15 @@ def account(account_normal):
 
     driver.quit()
 
-@pytest.fixture(scope='class')
+@pytest.fixture
 def account_cabinet(account_normal):
 
     email, password = account_normal
 
     driver.get('https://stellarburgers.nomoreparties.site')
-    driver.find_element(By.CSS_SELECTOR,'#root > div > header > nav > a').click()
+    WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_NORMAL_INPUT_WAIT_XPATH)))
+
+    driver.find_element(By.CSS_SELECTOR,CABINET_A).click()
 
     elm = driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL)
     elm.send_keys(email)
@@ -60,13 +66,16 @@ def account_cabinet(account_normal):
 
     driver.quit()
 
-@pytest.fixture(scope='class')
+@pytest.fixture
 def account_input(account_normal):
 
     email, password = account_normal
-
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     driver.get('https://stellarburgers.nomoreparties.site')
-    driver.find_element(By.CSS_SELECTOR,'#root > div > header > nav > a').click()
+    WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_NORMAL_INPUT_WAIT_XPATH)))
+    driver.find_element(By.XPATH,LOGIN_NORMAL_INPUT_XPATH).click()
+
+    WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
     elm = driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL)
     elm.send_keys(email)
@@ -80,11 +89,12 @@ def account_input(account_normal):
 
     driver.quit()
 
-@pytest.fixture(scope='class')
+@pytest.fixture
 def account_register_account(account_normal):
 
     email, password = account_normal
 
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     driver.get('https://stellarburgers.nomoreparties.site/register')
     driver.find_element(By.CSS_SELECTOR,A_REGISTRATION).click()
 
@@ -104,12 +114,13 @@ def account_register_account(account_normal):
 from selenium.webdriver.support      import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-@pytest.fixture(scope='class')
+@pytest.fixture
 def account_forget_password(account_normal):
 
     email, password = account_normal
     letter_code = '00000000'
 
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     driver.get('https://stellarburgers.nomoreparties.site/login')
     driver.find_element(By.CSS_SELECTOR,A_FORGET).click()
 
@@ -135,11 +146,10 @@ def account_forget_password(account_normal):
 
     driver.quit()
 
-@pytest.fixture(scope='class')
+@pytest.fixture
 def account_with_any_login():
     def _account_with_any_login(email, password):
-
-
+        driver = webdriver.Chrome(service=service, options=chrome_options)
         driver.get('https://stellarburgers.nomoreparties.site/login')
 
         elm = driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL)
