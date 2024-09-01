@@ -38,7 +38,6 @@ class TestAccount():
                 ttext = driver.current_url
                 aassert = ("/reset-password" in ttext)
                 assert aassert
-                return
 
         #pytest.mark.skip('error')
         @pytest.mark.parametrize('account,password',[['ivanov934@iivanov.com','123'],

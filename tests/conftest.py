@@ -17,7 +17,6 @@ chrome_options = webdriver.ChromeOptions()  # создали объект для
 #chrome_options.add_argument('--window-size=640,480')  # добавили ещё настройку
 
 service = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=service, options=chrome_options)
 
 @pytest.fixture
 def ddriver():
