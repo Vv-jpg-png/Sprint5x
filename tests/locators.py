@@ -12,6 +12,7 @@ A_FORGET = '#root > div > main > div > div > p:nth-child(2) > a'
 
 LOGIN_EMAIL_FORGET_XPATH = '//*[@id="root"]/div/main/div/form/fieldset/div/div/input'
 LOGIN_EMAIL_FORGET_BUTTON_XPATH = '//*[@id="root"]/div/main/div/form/button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa"]'
+
 LOGIN_PASSWORD_FORGET_XPATH = "//*[@id='root']/div/main/div/form/fieldset[1]/div/div/input[@type='password']"
 LOGIN_LETTER_CODE_FORGET_XPATH = "/html/body/div/div/main/div/form/fieldset[2]/div/div/input[@type='text']"
 LOGIN_FORGET_BUTTON = "//*[@id='root']/div/main/div/form/button[text()='Сохранить']"

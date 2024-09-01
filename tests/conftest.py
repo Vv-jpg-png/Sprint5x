@@ -29,6 +29,8 @@ def account(account_normal):
 
     email, password = account_normal
 
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+
     driver.get('https://stellarburgers.nomoreparties.site/login')
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
@@ -49,10 +51,14 @@ def account_cabinet(account_normal):
 
     email, password = account_normal
 
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+
     driver.get('https://stellarburgers.nomoreparties.site')
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_NORMAL_INPUT_WAIT_XPATH)))
 
     driver.find_element(By.CSS_SELECTOR,CABINET_A).click()
+
+    WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
     elm = driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL)
     elm.send_keys(email)
@@ -98,6 +104,8 @@ def account_register_account(account_normal):
     driver.get('https://stellarburgers.nomoreparties.site/register')
     driver.find_element(By.CSS_SELECTOR,A_REGISTRATION).click()
 
+    WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
+
     elm = driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL)
     elm.send_keys(email)
 
@@ -108,8 +116,7 @@ def account_register_account(account_normal):
 
     yield driver, email, password
 
-    driver.quit();
-#root > div > main > div > div > p:nth-child(2) > a
+    driver.quit()
 
 from selenium.webdriver.support      import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -124,14 +131,15 @@ def account_forget_password(account_normal):
     driver.get('https://stellarburgers.nomoreparties.site/login')
     driver.find_element(By.CSS_SELECTOR,A_FORGET).click()
 
-    time.sleep(ttime); #driver.refresh()
+    WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_EMAIL_FORGET_BUTTON_XPATH)))
+
     elm = driver.find_element(By.XPATH,LOGIN_EMAIL_FORGET_XPATH)
     elm.send_keys(email)
 
     elm = driver.find_element(By.XPATH,LOGIN_EMAIL_FORGET_BUTTON_XPATH)
     elm.click()
 
-    WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, LOGIN_PASSWORD_FORGET_XPATH)))
+    WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_PASSWORD_FORGET_XPATH)))
 
     elm = driver.find_element(By.XPATH,LOGIN_PASSWORD_FORGET_XPATH)
     elm.send_keys(password)
