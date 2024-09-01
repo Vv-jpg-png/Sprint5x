@@ -24,7 +24,7 @@ def account_normal():
     return 'iivanov@iivanov.com', '123456'
 
 @pytest.fixture
-def account(account_normal):
+def account_for_success_entrance(account_normal):
 
     email, password = account_normal
 
@@ -173,35 +173,6 @@ def account_with_any_login():
         return email, password
 
     yield driver, _account_with_any_login
-
-    driver.quit()
-
-@pytest.fixture
-def registration_success(account_normal):
-
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-
-    name     = 'Vladimir'
-    email    = f'bcc20080913_13_{random.randint(100,999)}@mail.ru'
-    password = '123456'
-
-    driver.get('https://stellarburgers.nomoreparties.site/register')
-
-    WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.CSS_SELECTOR, REGISTRATION_BUTTON)))
-
-    elm = driver.find_element(By.CSS_SELECTOR,REGISTRATION_NAME)
-    elm.send_keys(name)
-
-    elm = driver.find_element(By.CSS_SELECTOR,REGISTRATION_EMAIL)
-    elm.send_keys(email)
-
-    elm = driver.find_element(By.CSS_SELECTOR,REGISTRATION_PASSWORD)
-    elm.send_keys(password)
-
-    elm = driver.find_element(By.CSS_SELECTOR,REGISTRATION_BUTTON)
-    elm.click()
-
-    yield driver, name, email, password
 
     driver.quit()
 
