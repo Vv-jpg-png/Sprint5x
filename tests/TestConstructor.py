@@ -12,7 +12,8 @@ class TestConstructor():
         driver, email, password = account_cabinet
         driver.get(URL_COMMON)
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,CONSTR_BULKI_WAIT_XPATH)))
-        assert driver.find_element(By.XPATH, CONSTR_BULKI_A_XPATH).click() is not None
+        driver.find_element(By.XPATH, CONSTR_BULKI_A_XPATH).click()
+        assert driver.find_element(By.XPATH,LOGIN_SUCCESS_XPATH) is not None
 
     def test_constructor_souge_success(self, account_cabinet):
         driver, email, password = account_cabinet
@@ -20,11 +21,12 @@ class TestConstructor():
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,
                                         CONSTR_SOUGE_A_XPATH)))
         driver.find_element(By.XPATH, CONSTR_SOUGE_A_XPATH ).click()
-        assert driver.find_element(By.XPATH, CONSTR_SOUGE_A_XPATH ).click() is not None
+        assert driver.find_element(By.XPATH,LOGIN_SUCCESS_XPATH) is not None
 
     def test_constructor_nachinki_success(self, account_cabinet):
         driver, email, password = account_cabinet
         driver.get(URL_COMMON)
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,
                                         CONSTR_NACHINKA_A_XPATH)))
-        assert driver.find_element(By.XPATH, CONSTR_NACHINKA_A_XPATH).click() is not None
+        driver.find_element(By.XPATH, CONSTR_NACHINKA_A_XPATH).click()
+        assert driver.find_element(By.XPATH,LOGIN_SUCCESS_XPATH) is not None
