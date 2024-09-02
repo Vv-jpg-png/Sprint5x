@@ -18,9 +18,7 @@ class TestRegistration():
         name, email, password = func(driver, name, email, password)
 
         WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
-        ttext = driver.current_url
-        aassert = ("/login" in ttext)
-        assert aassert
+        assert ("/login" in driver.current_url)
 
     @pytest.mark.parametrize('name,email,password',[['','izivanov@iivanov.com','123456'],
                                                     ['','iyivanov@iivanov@com','123456'],
@@ -34,6 +32,4 @@ class TestRegistration():
         driver, func = registration_with_name_email
         name, email, password = func(driver, name, email, password)
         WebDriverWait(driver, wait_time).until(EC.presence_of_element_located((By.CSS_SELECTOR, REGISTRATION_BUTTON)))
-        ttext = driver.current_url
-        aassert = ("/register" in ttext)
-        assert aassert
+        assert ("/register" in driver.current_url)

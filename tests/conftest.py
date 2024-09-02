@@ -1,4 +1,3 @@
-import random
 wait_time = 5
 
 from locators import *
@@ -13,9 +12,6 @@ from selenium.webdriver.common.by import By
 
 
 chrome_options = webdriver.ChromeOptions()  # создали объект для опций
-#chrome_options.add_argument('--headless')  # добавили настройку ОТСУТСТВИЕ ВИДИМОСТЬ
-#chrome_options.add_argument('--window-size=640,480')  # добавили ещё настройку
-
 service = Service(ChromeDriverManager().install())
 
 @pytest.fixture
@@ -38,11 +34,9 @@ def account_for_success_entrance(ddriver, account_normal):
     driver.get(URL_LOGIN)
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
-    elm = driver.find_element(By.CSS_SELECTOR, LOGIN_EMAIL)
-    elm.send_keys(email)
+    driver.find_element(By.CSS_SELECTOR, LOGIN_EMAIL).send_keys(email)
 
-    elm = driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD)
-    elm.send_keys(password)
+    driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD).send_keys(password)
 
     driver.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
 
@@ -62,11 +56,9 @@ def account_cabinet(ddriver, account_normal):
 
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
-    elm = driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL)
-    elm.send_keys(email)
+    driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL).send_keys(email)
 
-    elm = driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD)
-    elm.send_keys(password)
+    driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD).send_keys(password)
 
     driver.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
 
@@ -83,11 +75,9 @@ def account_input(ddriver, account_normal):
 
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
-    elm = driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL)
-    elm.send_keys(email)
+    driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL).send_keys(email)
 
-    elm = driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD)
-    elm.send_keys(password)
+    driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD).send_keys(password)
 
     driver.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
 
@@ -104,11 +94,9 @@ def account_register_account(ddriver, account_normal):
 
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
-    elm = driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL)
-    elm.send_keys(email)
+    driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL).send_keys(email)
 
-    elm = driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD)
-    elm.send_keys(password)
+    driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD).send_keys(password)
 
     driver.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
 
@@ -128,22 +116,17 @@ def account_forget_password(ddriver, account_normal):
 
     WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_EMAIL_FORGET_BUTTON_XPATH)))
 
-    elm = driver.find_element(By.XPATH,LOGIN_EMAIL_FORGET_XPATH)
-    elm.send_keys(email)
+    driver.find_element(By.XPATH,LOGIN_EMAIL_FORGET_XPATH).send_keys(email)
 
-    elm = driver.find_element(By.XPATH,LOGIN_EMAIL_FORGET_BUTTON_XPATH)
-    elm.click()
+    driver.find_element(By.XPATH,LOGIN_EMAIL_FORGET_BUTTON_XPATH).click()
 
     WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_PASSWORD_FORGET_XPATH)))
 
-    elm = driver.find_element(By.XPATH,LOGIN_PASSWORD_FORGET_XPATH)
-    elm.send_keys(password)
+    driver.find_element(By.XPATH,LOGIN_PASSWORD_FORGET_XPATH).send_keys(password)
 
-    elm = driver.find_element(By.XPATH, LOGIN_LETTER_CODE_FORGET_XPATH)
-    elm.send_keys(letter_code)
+    driver.find_element(By.XPATH, LOGIN_LETTER_CODE_FORGET_XPATH).send_keys(letter_code)
 
-    elm = driver.find_element(By.XPATH, LOGIN_FORGET_BUTTON)
-    elm.click()
+    driver.find_element(By.XPATH, LOGIN_FORGET_BUTTON).click()
 
     yield driver, email, password
 
@@ -155,12 +138,10 @@ def account_with_any_login(ddriver):
 
         WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
-        elm = driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL)
-        elm.send_keys(email)
+        driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL).send_keys(email)
 
         if password != '':
-            elm = driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD)
-            elm.send_keys(password)
+            driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD).send_keys(password)
 
         driver.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
 
@@ -175,14 +156,11 @@ def registration_with_name_email(ddriver):
     def _registration_with_name_email(driver, name, email, password):
             driver.get(URL_REGISTRATION)
 
-            elm = driver.find_element(By.CSS_SELECTOR,REGISTRATION_NAME)
-            elm.send_keys(name)
+            driver.find_element(By.CSS_SELECTOR,REGISTRATION_NAME).send_keys(name)
 
-            elm = driver.find_element(By.CSS_SELECTOR,REGISTRATION_EMAIL)
-            elm.send_keys(email)
+            driver.find_element(By.CSS_SELECTOR,REGISTRATION_EMAIL).send_keys(email)
 
-            elm = driver.find_element(By.CSS_SELECTOR,REGISTRATION_PASSWORD)
-            elm.send_keys(password)
+            driver.find_element(By.CSS_SELECTOR,REGISTRATION_PASSWORD).send_keys(password)
 
             driver.find_element(By.CSS_SELECTOR, REGISTRATION_BUTTON).click()
 

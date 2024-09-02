@@ -12,24 +12,19 @@ class TestConstructor():
         driver, email, password = account_cabinet
         driver.get(URL_COMMON)
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,CONSTR_BULKI_WAIT_XPATH)))
-        elm = driver.find_element(By.XPATH, CONSTR_BULKI_A_XPATH)
-        elm.click()
-        assert elm is not None
+        assert driver.find_element(By.XPATH, CONSTR_BULKI_A_XPATH).click() is not None
 
     def test_constructor_souge_success(self, account_cabinet):
         driver, email, password = account_cabinet
         driver.get(URL_COMMON)
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,
                                         CONSTR_SOUGE_A_XPATH)))
-        elm = driver.find_element(By.XPATH, CONSTR_SOUGE_A_XPATH )
-        elm.click()
-        assert elm is not None
+        driver.find_element(By.XPATH, CONSTR_SOUGE_A_XPATH ).click()
+        assert driver.find_element(By.XPATH, CONSTR_SOUGE_A_XPATH ).click() is not None
 
     def test_constructor_nachinki_success(self, account_cabinet):
         driver, email, password = account_cabinet
         driver.get(URL_COMMON)
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,
                                         CONSTR_NACHINKA_A_XPATH)))
-        elm = driver.find_element(By.XPATH, CONSTR_NACHINKA_A_XPATH)
-        elm.click()
-        assert elm is not None
+        assert driver.find_element(By.XPATH, CONSTR_NACHINKA_A_XPATH).click() is not None
