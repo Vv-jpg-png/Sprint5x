@@ -18,8 +18,8 @@ class TestAccount():
                 WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_SUCCESS_WAIT_XPATH)))
                 assert driver.find_element(By.XPATH, LOGIN_SUCCESS_XPATH) is not None
 
-        def test_account_cabinet_success(self,account_cabinet):
-                driver, email, password = account_cabinet
+        def test_account_cabinet_success(self,account_for_success_entrance):
+                driver, email, password = account_for_success_entrance
                 WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_SUCCESS_WAIT_XPATH)))
                 assert driver.find_element(By.XPATH, LOGIN_SUCCESS_XPATH) is not None
 

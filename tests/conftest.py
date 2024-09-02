@@ -43,28 +43,6 @@ def account_for_success_entrance(ddriver, account_normal):
     yield driver, email, password
 
 @pytest.fixture
-def account_cabinet(ddriver, account_normal):
-
-    email, password = account_normal
-
-    driver = ddriver
-
-    driver.get(URL_COMMON)
-    WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_NORMAL_INPUT_WAIT_XPATH)))
-
-    driver.find_element(By.CSS_SELECTOR,CABINET_A).click()
-
-    WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
-
-    driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL).send_keys(email)
-
-    driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD).send_keys(password)
-
-    driver.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
-
-    yield driver, email, password
-
-@pytest.fixture
 def account_input(ddriver, account_normal):
 
     email, password = account_normal

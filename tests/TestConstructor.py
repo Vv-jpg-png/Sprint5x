@@ -8,23 +8,23 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class TestConstructor():
 
-    def test_constructor_bulki_success(self, account_cabinet):
-        driver, email, password = account_cabinet
+    def test_constructor_bulki_success(self, account_for_success_entrance):
+        driver, email, password = account_for_success_entrance
         driver.get(URL_COMMON)
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,CONSTR_BULKI_WAIT_XPATH)))
         driver.find_element(By.XPATH, CONSTR_BULKI_A_XPATH).click()
         assert driver.find_element(By.XPATH,LOGIN_SUCCESS_XPATH) is not None
 
-    def test_constructor_souge_success(self, account_cabinet):
-        driver, email, password = account_cabinet
+    def test_constructor_souge_success(self, account_for_success_entrance):
+        driver, email, password = account_for_success_entrance
         driver.get(URL_COMMON)
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,
                                         CONSTR_SOUGE_A_XPATH)))
         driver.find_element(By.XPATH, CONSTR_SOUGE_A_XPATH ).click()
         assert driver.find_element(By.XPATH,LOGIN_SUCCESS_XPATH) is not None
 
-    def test_constructor_nachinki_success(self, account_cabinet):
-        driver, email, password = account_cabinet
+    def test_constructor_nachinki_success(self, account_for_success_entrance):
+        driver, email, password = account_for_success_entrance
         driver.get(URL_COMMON)
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,
                                         CONSTR_NACHINKA_A_XPATH)))
