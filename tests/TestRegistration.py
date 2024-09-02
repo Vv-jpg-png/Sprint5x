@@ -12,9 +12,9 @@ import time
 class TestRegistration():
     #@pytest.mark.skip('xxx')
     def test_registration_success(self, registration_with_name_email):
-        name = 'Vladimir'
+        name = F'Vladimir{random.randint(1000, 9999)}'
         email = f'bcc20080913_13_{random.randint(1000, 9999)}@mail.ru'
-        password = '123456'
+        password = '1234567'
         func = registration_with_name_email
         driver, name, email, password = func(name, email, password)
         WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
@@ -31,5 +31,5 @@ class TestRegistration():
     def test_registration_fail_bad_password(self,registration_with_name_email, name, email, password):
         func = registration_with_name_email
         driver, name, email, password = func(name, email, password)
-        WebDriverWait(driver, wait_time).until(EC.presence_of_element_located((By.CSS_SELECTOR, REGISTRATION_BUTTON)))
+        WebDriverWait(driver, wait_time).until(EC.presence_of_element_located((By.XPATH, REGISTRATION_BUTTON_XPATH)))
         assert ("/register" in driver.current_url)
