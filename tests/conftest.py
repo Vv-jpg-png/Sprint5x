@@ -29,10 +29,10 @@ def account_for_success_entrance(ddriver, account_normal):
     email, password = account_normal
     driver = ddriver
     driver.get(URL_LOGIN)
-    WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
+    WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_XPATH)))
     driver.find_element(By.CSS_SELECTOR, LOGIN_EMAIL).send_keys(email)
     driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD).send_keys(password)
-    driver.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
+    driver.find_element(By.XPATH, LOGIN_BUTTON_XPATH).click()
     yield driver, email, password
 
 @pytest.fixture
@@ -45,7 +45,7 @@ def account_input(ddriver, account_normal):
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
     driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL).send_keys(email)
     driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD).send_keys(password)
-    driver.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
+    driver.find_element(By.XPATH, LOGIN_BUTTON_XPATH).click()
     yield driver, email, password
 
 @pytest.fixture
@@ -57,7 +57,7 @@ def account_register_account(ddriver, account_normal):
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
     driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL).send_keys(email)
     driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD).send_keys(password)
-    driver.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
+    driver.find_element(By.XPATH, LOGIN_BUTTON_XPATH).click()
     yield driver, email, password
 
 @pytest.fixture
@@ -85,7 +85,7 @@ def account_with_any_login(ddriver):
         driver.find_element(By.CSS_SELECTOR,LOGIN_EMAIL).send_keys(email)
         if password != '':
             driver.find_element(By.CSS_SELECTOR,LOGIN_PASSWORD).send_keys(password)
-        driver.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
+        driver.find_element(By.XPATH, LOGIN_BUTTON_XPATH).click()
         return email, password
     yield driver, _account_with_any_login
 

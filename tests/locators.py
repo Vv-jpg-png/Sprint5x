@@ -10,15 +10,18 @@ LOGIN_BUTTON = '#root > div > main > div > form > button'
 # Переменные для входа: Вход, Вход (ждать) в аккаунт(через основную панель)
 #
 
-LOGIN_BUTTON_WAIT_XPATH       = '//*[@id="root"]/div/main/div/form/button[text()="Войти"]'
-LOGIN_NORMAL_INPUT_WAIT_XPATH = '//*[@id="root"]/div/main/section[2]/div/button[text()="Войти в аккаунт"]'
+LOGIN_BUTTON_XPATH            = '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa"]'
+LOGIN_BUTTON_WAIT_XPATH       = LOGIN_BUTTON_XPATH
+LOGIN_NORMAL_INPUT_WAIT_XPATH = '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg"]'
 LOGIN_NORMAL_INPUT_XPATH      = '//*[@id="root"]/div/main/section[2]/div/button'
+LOGIN_NORMAL_INPUT_XPATH      = LOGIN_NORMAL_INPUT_WAIT_XPATH
 
 #
 # Переменные для входа в кабинет и регистрации
 #
 
 CABINET_A = '#root > div > header > nav > a'
+#CABINET_A = '//a[@class="AppHeader_header__link__3D_hX"]'
 A_REGISTRATION = '#root > div > main > div > div > p > a'
 
 #
@@ -54,10 +57,11 @@ LOGIN_WRONG_ACCOUNT_XPATH = "//*[@id='root']/div/main/div/form/fieldset[2]/div/p
 # Переменные для работы с кабинетом: вход, выходная кнопка, ссылка на конструктор, ссылка на логотип
 #
 
-CABINET_A_XPATH = '//*[@id="root"]/div/header/nav/a'
-CABINET_EXIT_BUTTON_XPATH = "//*[@id='root']/div/main/div/nav/ul/li[3]/button"
-CABINET_CONSTRUCTOR_A_XPATH = "//*[@id='root']/div/header/nav/ul/li[1]/a"
-CABINET_LOGOTYPE_A_XPATH = "//*[@id='root']/div/header/nav/div/a"
+CABINET_A_XPATH = '//header/nav/a[@class="AppHeader_header__link__3D_hX"]'
+
+CABINET_EXIT_BUTTON_XPATH   = '//ul/li/button[@class="Account_button__14Yp3 text text_type_main-medium text_color_inactive"]'
+CABINET_CONSTRUCTOR_A_XPATH = '//a[@class="AppHeader_header__link__3D_hX"]'
+CABINET_LOGOTYPE_A_XPATH    = "//header/nav/div/a"
 
 CABINET_LOGIN_BUTTON_XPATH = '//*[@id="root"]/div/main/div/form/button[text()="Войти"]'
 
@@ -75,7 +79,8 @@ CONSTR_NACHINKA_A_XPATH = '//*[@id="root"]/div/main/section[1]/div[1]/div[3]/spa
 #
 LOGIN_SUCCESS_WAIT_XPATH = '//*[@id="root"]/div/main/section[2]/div/button[text()="Оформить заказ"]'
 LOGIN_SUCCESS_XPATH      = '//*[@id="root"]/div/main/section[2]/div/button'
-
+LOGIN_SUCCESS_XPATH      = '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg"]'
+LOGIN_SUCCESS_WAIT_XPATH = LOGIN_SUCCESS_XPATH
 #URLs
 
 URL_COMMON = 'https://stellarburgers.nomoreparties.site'
