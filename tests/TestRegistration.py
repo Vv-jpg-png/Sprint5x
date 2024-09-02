@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 class TestRegistration():
     def test_registration_success(self, registration_with_name_email):
         name = 'Vladimir'
-        email = f'bcc20080913_13_{random.randint(100, 999)}@mail.ru'
+        email = f'bcc20080913_13_{random.randint(1000, 9999)}@mail.ru'
         password = '123456'
         driver, func = registration_with_name_email
         name, email, password = func(driver, name, email, password)

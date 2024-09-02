@@ -2,9 +2,8 @@
 # Переменные для входной панели
 #
 
-LOGIN_EMAIL = '#root > div > main > div > form > fieldset:nth-child(1) > div > div > input'
-LOGIN_PASSWORD = '#root > div > main > div > form > fieldset:nth-child(2) > div > div > input'
-LOGIN_BUTTON = '#root > div > main > div > form > button'
+LOGIN_EMAIL_XPATH    = '//input[@class="text input__textfield text_type_main-default" and @type="text"]'
+LOGIN_PASSWORD_XPATH = '//input[@class="text input__textfield text_type_main-default" and @type="password"]'
 
 #
 # Переменные для входа: Вход, Вход (ждать) в аккаунт(через основную панель)
@@ -13,7 +12,6 @@ LOGIN_BUTTON = '#root > div > main > div > form > button'
 LOGIN_BUTTON_XPATH            = '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa"]'
 LOGIN_BUTTON_WAIT_XPATH       = LOGIN_BUTTON_XPATH
 LOGIN_NORMAL_INPUT_WAIT_XPATH = '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg"]'
-LOGIN_NORMAL_INPUT_XPATH      = '//*[@id="root"]/div/main/section[2]/div/button'
 LOGIN_NORMAL_INPUT_XPATH      = LOGIN_NORMAL_INPUT_WAIT_XPATH
 
 #
