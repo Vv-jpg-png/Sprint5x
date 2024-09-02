@@ -67,9 +67,14 @@ CABINET_LOGIN_BUTTON_XPATH = '//main/div/form/button[text()="Войти"]'
 #
 
 CONSTR_BULKI_WAIT_XPATH = '//main/section[1]/div[1]/div[1]/span'
+
 CONSTR_BULKI_A_XPATH    = '//main/section[1]/div[1]'
 CONSTR_SOUGE_A_XPATH    = '//main/section[1]/div[1]/div[2]/span'
 CONSTR_NACHINKA_A_XPATH = '//main/section[1]/div[1]/div[3]/span'
+
+CONSTR_BULKI_ASSERT     = '//main/section[1]/div[1]/div[1]'
+CONSTR_SOUGE_ASSERT     = '//main/section[1]/div[1]/div[2]'
+CONSTR_NACHINKA_ASSERT  = '//main/section[1]/div[1]/div[3]'
 
 #
 # Переменные для рааботы с успешным входом
