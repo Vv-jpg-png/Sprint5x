@@ -12,11 +12,7 @@ class TestConstructor():
         driver.get(URL_COMMON)
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH, CONSTR_BULKI_WAIT_XPATH)))
         driver.find_element(By.XPATH, CONSTR_BULKI_A_XPATH).click()
-        WebDriverWait(driver,wait_time).until(EC.all_of(
-                                EC.presence_of_element_located((By.XPATH, CONSTR_BULKI_ASSERT)),
-                                                 EC.presence_of_element_located((By.XPATH, CONSTR_SOUGE_ASSERT)),
-                                                 EC.presence_of_element_located((By.XPATH, CONSTR_NACHINKA_ASSERT)),
-                                                ))
+        WebDriverWait(driver, wait_time).until(lambda d: d.execute_script("return document.readyState") == "complete")
         assert 'current' in driver.find_element(By.XPATH,CONSTR_BULKI_ASSERT).get_attribute('class')
 
     def test_constructor_souge_success(self, account_for_success_entrance):
@@ -25,8 +21,7 @@ class TestConstructor():
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,
                                         CONSTR_SOUGE_A_XPATH)))
         driver.find_element(By.XPATH, CONSTR_SOUGE_A_XPATH ).click()
-
-        WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH, CONSTR_SOUGE_ASSERT)))
+        WebDriverWait(driver, wait_time).until(lambda d: d.execute_script("return document.readyState") == "complete")
         assert 'current' in driver.find_element(By.XPATH,CONSTR_SOUGE_ASSERT).get_attribute('class')
 
     def test_constructor_nachinki_success(self, account_for_success_entrance):
@@ -35,5 +30,6 @@ class TestConstructor():
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,
                                         CONSTR_NACHINKA_A_XPATH)))
         driver.find_element(By.XPATH, CONSTR_NACHINKA_A_XPATH).click()
-        WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH, CONSTR_NACHINKA_ASSERT)))
+        WebDriverWait(driver, wait_time).until(lambda d: d.execute_script("return document.readyState") == "complete")
         assert 'current' in driver.find_element(By.XPATH,CONSTR_NACHINKA_ASSERT).get_attribute('class')
+
