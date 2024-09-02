@@ -7,7 +7,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 class TestConstructor():
-
     def test_constructor_bulki_success(self, account_for_success_entrance):
         driver, email, password = account_for_success_entrance
         driver.get(URL_COMMON)

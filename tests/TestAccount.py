@@ -1,5 +1,6 @@
 wait_time = 5
 
+
 from locators import *
 import pytest
 

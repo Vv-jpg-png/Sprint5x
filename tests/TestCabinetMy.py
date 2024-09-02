@@ -33,12 +33,8 @@ class TestCabinetMy():
 
     def test_my_cabinet_exit_success(self,account_for_success_entrance):
         driver, email, password = account_for_success_entrance
-        driver.find_element(By.XPATH,'//*[@id="root"]/div/header/nav/a').click()
+        driver.find_element(By.XPATH,CABINET_A_XPATH).click()
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,CABINET_EXIT_BUTTON_XPATH)))
-        elm = (driver.find_element(By.XPATH,CABINET_EXIT_BUTTON_XPATH))
-        elm.click()
-
+        driver.find_element(By.XPATH,CABINET_EXIT_BUTTON_XPATH).click()
         WebDriverWait(driver,wait_time).until(EC.presence_of_element_located((By.XPATH,CABINET_LOGIN_BUTTON_XPATH)))
-
         assert '/login' in driver.current_url
-

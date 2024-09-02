@@ -9,14 +9,11 @@ from selenium.webdriver.common.by import By
 
 class TestRegistration():
     def test_registration_success(self, registration_with_name_email):
-
         name = 'Vladimir'
         email = f'bcc20080913_13_{random.randint(100, 999)}@mail.ru'
         password = '123456'
-
         driver, func = registration_with_name_email
         name, email, password = func(driver, name, email, password)
-
         WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
         assert ("/login" in driver.current_url)
 
