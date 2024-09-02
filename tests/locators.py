@@ -76,3 +76,9 @@ CONSTR_NACHINKA_A_XPATH = '//*[@id="root"]/div/main/section[1]/div[1]/div[3]/spa
 LOGIN_SUCCESS_WAIT_XPATH = '//*[@id="root"]/div/main/section[2]/div/button[text()="Оформить заказ"]'
 LOGIN_SUCCESS_XPATH      = '//*[@id="root"]/div/main/section[2]/div/button'
 
+
+#URLs
+
+URL_COMMON = 'https://stellarburgers.nomoreparties.site'
+URL_LOGIN  = 'https://stellarburgers.nomoreparties.site/login'
+URL_REGISTRATION = 'https://stellarburgers.nomoreparties.site/register'

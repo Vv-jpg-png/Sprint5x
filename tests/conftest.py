@@ -35,7 +35,7 @@ def account_for_success_entrance(ddriver, account_normal):
 
     driver = ddriver
 
-    driver.get('https://stellarburgers.nomoreparties.site/login')
+    driver.get(URL_LOGIN)
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
     elm = driver.find_element(By.CSS_SELECTOR, LOGIN_EMAIL)
@@ -55,7 +55,7 @@ def account_cabinet(ddriver, account_normal):
 
     driver = ddriver
 
-    driver.get('https://stellarburgers.nomoreparties.site')
+    driver.get(URL_COMMON)
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_NORMAL_INPUT_WAIT_XPATH)))
 
     driver.find_element(By.CSS_SELECTOR,CABINET_A).click()
@@ -77,7 +77,7 @@ def account_input(ddriver, account_normal):
 
     email, password = account_normal
     driver = ddriver
-    driver.get('https://stellarburgers.nomoreparties.site')
+    driver.get(URL_COMMON)
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_NORMAL_INPUT_WAIT_XPATH)))
     driver.find_element(By.XPATH,LOGIN_NORMAL_INPUT_XPATH).click()
 
@@ -99,7 +99,7 @@ def account_register_account(ddriver, account_normal):
     email, password = account_normal
 
     driver = ddriver
-    driver.get('https://stellarburgers.nomoreparties.site/register')
+    driver.get(URL_REGISTRATION)
     driver.find_element(By.CSS_SELECTOR,A_REGISTRATION).click()
 
     WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
@@ -114,7 +114,6 @@ def account_register_account(ddriver, account_normal):
 
     yield driver, email, password
 
-from selenium.webdriver.support      import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 @pytest.fixture
@@ -124,7 +123,7 @@ def account_forget_password(ddriver, account_normal):
     letter_code = '00000000'
 
     driver = ddriver
-    driver.get('https://stellarburgers.nomoreparties.site/login')
+    driver.get(URL_LOGIN)
     driver.find_element(By.CSS_SELECTOR,A_FORGET).click()
 
     WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_EMAIL_FORGET_BUTTON_XPATH)))
@@ -152,7 +151,7 @@ def account_forget_password(ddriver, account_normal):
 def account_with_any_login(ddriver):
     driver = ddriver
     def _account_with_any_login(email, password):
-        driver.get('https://stellarburgers.nomoreparties.site/login')
+        driver.get(URL_LOGIN)
 
         WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
 
@@ -174,7 +173,7 @@ def registration_with_name_email(ddriver):
     driver = ddriver
 
     def _registration_with_name_email(driver, name, email, password):
-            driver.get('https://stellarburgers.nomoreparties.site/register')
+            driver.get(URL_REGISTRATION)
 
             elm = driver.find_element(By.CSS_SELECTOR,REGISTRATION_NAME)
             elm.send_keys(name)
