@@ -16,8 +16,7 @@ class TestAccount():
         def test_account_input_success(self,account_input):
                 driver, email, password = account_input
                 WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_SUCCESS_WAIT_XPATH)))
-                elm = driver.find_element(By.XPATH, LOGIN_SUCCESS_XPATH)
-                assert elm is not None
+                assert driver.find_element(By.XPATH, LOGIN_SUCCESS_XPATH) is not None
 
         def test_account_cabinet_success(self,account_cabinet):
                 driver, email, password = account_cabinet
