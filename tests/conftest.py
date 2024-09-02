@@ -91,13 +91,14 @@ def account_with_any_login(ddriver):
 
 @pytest.fixture
 def registration_with_name_email(ddriver):
-    driver = ddriver
-    def _registration_with_name_email(driver, name, email, password):
+    def _registration_with_name_email(name, email, password):
+            driver = ddriver
             driver.get(URL_REGISTRATION)
-            driver.find_element(By.CSS_SELECTOR,REGISTRATION_NAME).send_keys(name)
-            driver.find_element(By.CSS_SELECTOR,REGISTRATION_EMAIL).send_keys(email)
-            driver.find_element(By.CSS_SELECTOR,REGISTRATION_PASSWORD).send_keys(password)
-            driver.find_element(By.CSS_SELECTOR, REGISTRATION_BUTTON).click()
-            return (name, email, password)
-    yield driver, _registration_with_name_email
+            WebDriverWait(driver,wait_time).until(EC.element_to_be_clickable((By.XPATH, REGISTRATION_BUTTON_XPATH)))
+            driver.find_element(By.XPATH, REGISTRATION_NAME_XPATH).send_keys(name)
+            driver.find_element(By.XPATH, REGISTRATION_EMAIL_XPATH).send_keys(email)
+            driver.find_element(By.XPATH, REGISTRATION_PASSWORD_XPATH).send_keys(password)
+            driver.find_element(By.XPATH, REGISTRATION_BUTTON_XPATH).click()
+            return driver, name, email, password
+    yield _registration_with_name_email
 
