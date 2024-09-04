@@ -50,8 +50,8 @@ def account_register_account(account_normal, account_with_any_login):
     email, password = account_normal
     driver, func = account_with_any_login
     driver.get(URL_REGISTRATION)
-    driver.find_element(By.CSS_SELECTOR,A_REGISTRATION).click()
-    email, password = func(email, password)
+    driver.find_element(By.XPATH,REGISTER_A_XPATH).click()
+    email, password = func(email, password, with_get=False)
     yield driver, email, password
 
 @pytest.fixture
@@ -60,7 +60,8 @@ def account_forget_password(ddriver, account_normal):
     letter_code = '00000000'
     driver = ddriver
     driver.get(URL_LOGIN)
-    driver.find_element(By.CSS_SELECTOR,A_FORGET).click()
+    WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
+    driver.find_element(By.XPATH,FORGET_A_XPATH).click()
     WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_EMAIL_FORGET_BUTTON_XPATH)))
     driver.find_element(By.XPATH,LOGIN_EMAIL_FORGET_XPATH).send_keys(email)
     driver.find_element(By.XPATH,LOGIN_EMAIL_FORGET_BUTTON_XPATH).click()
@@ -77,8 +78,9 @@ def account_forget_password(ddriver, account_normal):
 @pytest.fixture
 def account_with_any_login(ddriver):
     driver = ddriver
-    def _account_with_any_login(email, password):
-        driver.get(URL_LOGIN)
+    def _account_with_any_login(email, password, with_get=True):
+        if with_get :
+            driver.get(URL_LOGIN)
         WebDriverWait(driver, wait_time).until(EC.element_to_be_clickable((By.XPATH, LOGIN_BUTTON_WAIT_XPATH)))
         driver.find_element(By.XPATH,LOGIN_EMAIL_XPATH).send_keys(email)
         if password != '':
