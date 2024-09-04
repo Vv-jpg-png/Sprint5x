@@ -38,7 +38,7 @@ LOGIN_FORGET_BUTTON            = "//main/div/form/button[text()='Сохрани�
 # Переменные для регистрации
 #
 
-REGISTRATION_NAME_XPATH = '//main/div/form/fieldset[1]/div/div/input[@class="text input__textfield text_type_main-default" and @type="text"]'
+REGISTRATION_NAME_XPATH  = '//main/div/form/fieldset[1]/div/div/input[@class="text input__textfield text_type_main-default" and @type="text"]'
 REGISTRATION_EMAIL_XPATH = '//main/div/form/fieldset[2]/div/div/input[@class="text input__textfield text_type_main-default" and @type="text"]'
 REGISTRATION_PASSWORD_XPATH = '//main/div/form/fieldset[3]/div/div/input[@class="text input__textfield text_type_main-default" and @type="password"]'
 REGISTRATION_BUTTON_XPATH = '//main/div/form/button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa"]'
