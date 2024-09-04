@@ -49,7 +49,6 @@ LOGIN_WRONG_ACCOUNT_XPATH      = "//fieldset[2]/div/p"
 #
 # Переменные для работы с кабинетом: вход, выходная кнопка, ссылка на конструктор, ссылка на логотип
 #
-
 CABINET_A_XPATH = '//a[@href="/account"]'
 
 CABINET_EXIT_BUTTON_XPATH   = '//ul/li/button[@class="Account_button__14Yp3 text text_type_main-medium text_color_inactive"]'
@@ -75,14 +74,13 @@ CONSTR_NACHINKA_ASSERT  = '//main/section[1]/div[1]/div[3]'
 #
 # Переменные для рааботы с успешным входом
 #
-LOGIN_SUCCESS_WAIT_XPATH = '//main/section[2]/div/button[text()="Оформить заказ"]'
+LOGIN_SUCCESS_WAIT_XPATH = '//button[text()="Оформить заказ"]'
 LOGIN_SUCCESS_XPATH      = '//main/section[2]/div/button'
 LOGIN_SUCCESS_XPATH      = '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg"]'
 LOGIN_SUCCESS_WAIT_XPATH = LOGIN_SUCCESS_XPATH
 
-
 #URLs
 
 URL_COMMON = 'https://stellarburgers.nomoreparties.site'
-URL_LOGIN  = 'https://stellarburgers.nomoreparties.site/login'
+URL_LOGIN = 'https://stellarburgers.nomoreparties.site/login'
 URL_REGISTRATION = 'https://stellarburgers.nomoreparties.site/register'
