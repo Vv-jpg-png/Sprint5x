@@ -62,7 +62,7 @@ CABINET_LOGIN_BUTTON_XPATH = '//button[text()="Войти"]'
 #
 
 CONSTR_BULKI_WAIT_XPATH = '//main/section[1]/div[1]/div[1]/span'
-#CONSTR_BULKI_A_XPATH    = '//main/section[1]/div[1]'
+#CONSTR_BULKI_A_XPATH    = '//main/section[1]/div[1]' # ?????
 CONSTR_BULKI_A_XPATH    = '//parent::div'
 CONSTR_SOUGE_A_XPATH    = '//main/section[1]/div[1]/div[2]/span'
 CONSTR_NACHINKA_A_XPATH = '//main/section[1]/div[1]/div[3]/span'
