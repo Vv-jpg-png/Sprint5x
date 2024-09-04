@@ -62,8 +62,8 @@ CABINET_LOGIN_BUTTON_XPATH = '//button[text()="Войти"]'
 #
 
 CONSTR_BULKI_WAIT_XPATH = '//main/section[1]/div[1]/div[1]/span'
-
-CONSTR_BULKI_A_XPATH    = '//main/section[1]/div[1]'
+#CONSTR_BULKI_A_XPATH    = '//main/section[1]/div[1]'
+CONSTR_BULKI_A_XPATH    = '//parent::div'
 CONSTR_SOUGE_A_XPATH    = '//main/section[1]/div[1]/div[2]/span'
 CONSTR_NACHINKA_A_XPATH = '//main/section[1]/div[1]/div[3]/span'
 
@@ -75,7 +75,6 @@ CONSTR_NACHINKA_ASSERT  = '//main/section[1]/div[1]/div[3]'
 # Переменные для рааботы с успешным входом
 #
 LOGIN_SUCCESS_WAIT_XPATH = '//button[text()="Оформить заказ"]'
-LOGIN_SUCCESS_XPATH      = '//main/section[2]/div/button'
 LOGIN_SUCCESS_XPATH      = '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg"]'
 LOGIN_SUCCESS_WAIT_XPATH = LOGIN_SUCCESS_XPATH
 
