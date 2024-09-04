@@ -20,6 +20,10 @@ def ddriver():
     yield driver
     driver.quit()
 
+'''  
+     https://docs.pytest.org/en/stable/how-to/fixtures.html
+     Я ничего не придумываю, я беру код или их аналоги из примеров  
+'''
 @pytest.fixture
 def account_normal():
     return 'iivanov@iivanov.com', '123456'
@@ -66,6 +70,10 @@ def account_forget_password(ddriver, account_normal):
     driver.find_element(By.XPATH, LOGIN_FORGET_BUTTON).click()
     yield driver, email, password
 
+'''  
+     https://docs.pytest.org/en/stable/how-to/fixtures.html
+     Я ничего не придумываю, я беру код или их аналоги из примеров. Это называется фабрика.
+'''
 @pytest.fixture
 def account_with_any_login(ddriver):
     driver = ddriver
@@ -79,6 +87,10 @@ def account_with_any_login(ddriver):
         return email, password
     yield driver, _account_with_any_login
 
+'''  
+     https://docs.pytest.org/en/stable/how-to/fixtures.html
+     Я ничего не придумываю, я беру код или их аналоги из примеров.  Это называется фабрика.
+'''
 @pytest.fixture
 def registration_with_name_email(ddriver):
     def _registration_with_name_email(name, email, password):
